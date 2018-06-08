@@ -1,0 +1,14 @@
+jsf:
+  primefaces:
+    theme: sunny
+
+spring:
+  datasource:
+    url: jdbc:h2:~/h2db/testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  h2:
+    console.enabled: true
+  jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect

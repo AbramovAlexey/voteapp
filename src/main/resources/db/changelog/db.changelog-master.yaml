@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: avabramov
+      changes:
+        - createTable:
+            tableName: VOTE_OPTION
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+  - changeSet:
+        id: 2
+        author: avabramov
+        changes:
+          - createTable:
+              tableName: VOTE
+              columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: vote_option_id
+                    type: int
+                    constraints:
+                      nullable: false
+                      foreignKeyName: fk_VOTE_OPTION
+                      references: VOTE_OPTION(id)
+  - changeSet:
+      id: 3
+      author: avabramov
+      changes:
+        - insert:
+            tableName: VOTE_OPTION
+            columns:
+              - column:
+                  name: name
+                  value: Ricky
+        - insert:
+            tableName: VOTE_OPTION
+            columns:
+              - column:
+                  name: name
+                  value: Ticky
+        - insert:
+            tableName: VOTE_OPTION
+            columns:
+              - column:
+                  name: name
+                  value: Tacky

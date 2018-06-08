@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  <title>VoteApp</title>
+</h:head>
+
+<h:body>
+  <h:form id="VotingForm">
+
+    <p:panel header="Voting Page">
+      <h3>Select option:</h3>
+
+      <p:selectOneRadio id="select_op" value="#{voteOptionView.selectedOptionId}" layout="responsive" columns="1">
+        <f:selectItems value="#{voteOptionView.getVoteOptionList()}" var="op" itemLabel="#{op.name}" itemValue="#{op.id}"/>
+      </p:selectOneRadio>
+
+      <p:commandButton id="submit" value="Submit Vote" update="select_op" action="#{voteOptionView.submitVote()}"/>
+    </p:panel>
+
+  </h:form>
+</h:body>
+
+</html>
